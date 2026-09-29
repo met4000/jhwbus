@@ -66,7 +66,7 @@ int Java_org_arl_jhwbus_I2CDevice_I2CReadByte(JNIEnv* env, jobject obj, jint fd)
 
 int Java_org_arl_jhwbus_I2CDevice_I2CWriteByte(JNIEnv* env, jobject obj, jint fd, jbyte data){
     log_info("Writing a byte 0x%02X", data);
-    return i2c_smbus_write_byte(fd, data);;
+    return i2c_smbus_write_byte(fd, data);
 }
 
 int Java_org_arl_jhwbus_I2CDevice_I2CWriteByteData(JNIEnv* env, jobject obj, jint fd, jbyte cmd, jbyte data){
