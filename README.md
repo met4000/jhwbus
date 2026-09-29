@@ -1,11 +1,12 @@
 # jhwbus
+
 Java hardware bus access for Linux
 
 A simple, thin JNI based Java library to access simple hardware buses (for e.g. I2C) from Java on Linux. The library jar brings along the native library (`libjhwbus.so`) and dynamically loads it at runtime. Since Linux only supports simple hardware buses directly on ARM, this library is **only supported for Linux on ARM machines**.
 
 Currently, supports the following hardware buses:
 
-- I2C/SMBUS - [Linux I2C](https://www.kernel.org/doc/html/latest/i2c/index.html)
+- I2C/SMBus - [Linux I2C](https://www.kernel.org/doc/html/latest/i2c/index.html)
 
 ## Building
 
@@ -30,32 +31,17 @@ The Dockerfile used for the containerized build is [available here](Dockerfile)
 #### On non-Linux (macos)
 
 - Container runtime like [Docker Desktop](https://www.docker.com/products/docker-desktop) or [Colima](https://github.com/abiosoft/colima)
-* [docker cli](https://www.docker.com/products/cli/) - on macos can be installed using `brew install docker`
+- [docker cli](https://www.docker.com/products/cli/) - on macos can be installed using `brew install docker`
 
 Since we need to build the native library for ARM architecture, the container runtime has to either run on an ARM machine or support ARM emulation.
+
+**_Note_**: not updated as part of the update to gradle 9. Likely broken.
 
 ### Commands
 
 `./gradlew` : Generates a jar with the native library included in `build/libs`
 
 The default [docker-cli context](https://docs.docker.com/engine/manage-resources/contexts/) used is [colima](https://github.com/abiosoft/colima). However, this can be overridden using the `-PdockerContext=` CLI flag.
-
-### Using
-
-The library is published to GitHub Packages and can be included in the project using the following `build.gradle` configuration:
-
-```groovy
-repositories {
-    maven {
-        name = "GitHubPackages-jhwbus"
-        url = uri("https://maven.pkg.github.com/jhwbus/jhwbus")
-    }
-}
-
-dependencies {
-    implementation 'io.github.jhwbus:jhwbus:1.2.0'
-}
-```
 
 ## License
 
